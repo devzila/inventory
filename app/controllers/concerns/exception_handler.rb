@@ -24,11 +24,5 @@ module ExceptionHandler
     rescue_from MissingParams do |e|
       render_error message: e.message, status: :not_acceptable
     end
-
-    rescue_from Consul::Powerless do |e|
-      render_error message: 'No Power', status: :unauthorized
-    end
-
   end
-
 end

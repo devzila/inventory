@@ -1,7 +1,6 @@
 class V1::Auth::SessionController < ApplicationController
-  include AuthAction
-
-  # POST /v1/admin/auth
+  include AuthRenderer
+  # POST /v1/auth
   def create
     auth_handler(User.active)
   end
@@ -10,8 +9,8 @@ class V1::Auth::SessionController < ApplicationController
   private
   def auth_handler(scope)
     # required params must be there
-    assert_required_params params, [:username, :password]
-    user = scope.find_by(username: params[:username])
+    assert_required_params params, [:email, :password]
+    user = scope.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       render_login(user)
     else

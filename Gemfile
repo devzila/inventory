@@ -39,7 +39,6 @@ gem 'jwt'
 gem 'acts_as_api'
 gem 'ransack'
 gem 'kaminari'
-gem 'puma', '~> 5.0'
 gem 'rack-cors'
 
 group :development, :test do

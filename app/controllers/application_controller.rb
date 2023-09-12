@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   include Renderer
-  # include ExceptionHandler
+  include ExceptionHandler
   include ActionController::MimeResponds
   include ActionController::ImplicitRender
 
