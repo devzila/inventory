@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       resources :whoami, only: :index
     end
     resources :users
+    resources :items
   end
 end

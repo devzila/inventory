@@ -11,3 +11,9 @@ User.create([
               { name: 'Manager', email: 'manager@inv.com', password: 'password' },
               { name: 'Admin', email: 'admin@inv.com', password: 'password' }
             ])
+
+Item.create([
+              { name: 'AFATINIB', description: 'AFATINIB', item_type: 0, quantity: 100, alert_quantity: 40 },
+              { name: 'BARCITNIB', description: 'BARCITNIB', item_type: 0, quantity: 500, alert_quantity: 100 },
+              { name: 'APREPITNIB', description: 'APREPITNIB', item_type: 1, quantity: 300, alert_quantity: 80 }
+            ])

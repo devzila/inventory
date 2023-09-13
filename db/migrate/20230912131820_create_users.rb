@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       t.integer :role
       t.string :name, null: false
-      t.string :email, null: false, index: true
+      t.string :email, null: false, index: {unique: true}
       t.string :password_digest
       t.string :password_reset_token
       t.datetime :password_reset_sent_at

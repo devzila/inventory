@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_132010) do
     t.integer "alert_quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_132010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_users_on_active"
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "item_daily_logs", "items"
