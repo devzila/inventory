@@ -2,8 +2,8 @@ class V1::ItemsController < V1::BaseController
   include BaseCrud
 
   private
-  def user_params
-    params.require(:user).permit(
+  def item_params
+    params.require(:item).permit(
         :name,
         :description,
         :item_type,

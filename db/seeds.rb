@@ -9,7 +9,7 @@
 User.create([
               { name: 'Admin', email: 'admin@inv.com', password: 'password' },
               { name: 'Manager', email: 'manager@inv.com', password: 'password' },
-              { name: 'Admin', email: 'admin@inv.com', password: 'password' }
+              { name: 'Purchase Head', email: 'purchase@inv.com', password: 'password' }
             ])
 
 Item.create([

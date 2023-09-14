@@ -14,12 +14,16 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
+  password: root1234
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
+<<<<<<< HEAD
   database: <%= Rails.application.credentials[:db][:database] %>
+=======
+  database: inventory_development
+>>>>>>> a70180f3b885a3497b1d98188741483c7d3224f5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +54,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= %>Rails.application.credentials[:db][:database] %>
-  username: <%= %>Rails.application.credentials[:db][:user] %>
-  password: <%= %>Rails.application.credentials[:db][:password] %>
+  database: inventory_production
+  username: inventory
+  password: <%= ENV["INVENTORY_DATABASE_PASSWORD"] %>
