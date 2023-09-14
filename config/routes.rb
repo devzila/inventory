@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :whoami, only: :index
     end
     resources :users
-    resources :items
+    resources :items do
+      resources :transactions, controller: 'items/transactions'
+    end
   end
 end
