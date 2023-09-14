@@ -1,4 +1,4 @@
-class V1::Admin::Auth::WhoamiController < V1::Admin::BaseController
+class V1::Auth::WhoamiController < V1::BaseController
 
   def index
     render json: { user: current_user }
