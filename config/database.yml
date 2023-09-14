@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: inventory_development
+  database: <%= %>Rails.application.credentials[:db][:database] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: inventory_production
-  username: inventory
-  password: <%= ENV["INVENTORY_DATABASE_PASSWORD"] %>
+  database: <%= %>Rails.application.credentials[:db][:database] %>
+  username: <%= %>Rails.application.credentials[:db][:user] %>
+  password: <%= %>Rails.application.credentials[:db][:password] %>
