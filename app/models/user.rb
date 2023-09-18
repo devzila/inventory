@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include UserPresenter
 
   scope :active, -> { where(active: true) }
+  has_many :device_tokens, class_name: 'UserDevice'
 
   # ======================== CLASS METHODS ========================== #
   def self.current
