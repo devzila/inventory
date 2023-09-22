@@ -40,6 +40,7 @@ gem 'acts_as_api'
 gem 'ransack'
 gem 'kaminari'
 gem 'rack-cors'
+gem 'fcm'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

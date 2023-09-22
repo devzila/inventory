@@ -8,24 +8,18 @@ class Item < ApplicationRecord
     side_chain: 1
   }
 
-	
-	def update_item_transactions(transaction_type, quantity)
-		self.item_transactions.create(transaction_type: transaction_type, quantity: quantity)
-	end
-
   def create_transaction
-    if saved_change_to_quantity?
-      old_quantity, new_quantity = saved_change_to_quantity
+    return unless saved_change_to_quantity?
 
-      transaction_type =
-        if new_quantity > old_quantity
-          0
-        else  new_quantity < old_quantity
-          1
-        end
-        ActiveRecord::Base.transaction do
-          item_transactions.create(transaction_type: transaction_type, quantity: new_quantity)
-        end
-    end
+    old_quantity, new_quantity = saved_change_to_quantity
+    transaction_type = new_quantity < old_quantity && 1 || 0
+    transaction = self.item_transactions.create(
+      transaction_type: transaction_type,
+      quantity: new_quantity,
+      user: User.current
+    )
+
+    fcm_response = PushNotifier.notify_item_quantity_change('Quantity changed', self)
+    transaction.update_column('fcm_response', fcm_response)
   end
 end

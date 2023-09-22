@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_164639) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_22_101121) do
   create_table "item_daily_logs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.integer "quantity", default: 0
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_164639) do
     t.integer "transaction_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "fcm_response"
     t.index ["item_id"], name: "index_item_transactions_on_item_id"
     t.index ["user_id"], name: "index_item_transactions_on_user_id"
   end
