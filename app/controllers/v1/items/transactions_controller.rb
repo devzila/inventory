@@ -10,7 +10,7 @@ class V1::Items::TransactionsController < V1::Items::BaseController
       end
 		  @item.update!(quantity: @new_quantity)
 		# @item.update_item_transactions(params[:transaction_type], params[:quantity])
-		  render json: {message: "Successfully updated the Quantity", item: @item}, status: 200
+		  render json: {message: "Successfully updated the Quantity", transaction: @item.item_transactions}, status: 200
     else
       render json: {message: "Error while updating Quantity"}, status: 402
     end
@@ -19,7 +19,9 @@ class V1::Items::TransactionsController < V1::Items::BaseController
 	def index
 		render json: @item.item_transactions
 	end
-
+	def show
+		render json: @item.item_transactions.find(params[:id])
+	end
 
 	private
 
