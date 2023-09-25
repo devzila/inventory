@@ -1,21 +1,21 @@
 class Item < ApplicationRecord
   include ItemPresenter
   has_many :item_transactions
-  after_update :create_transaction
+  # after_update :create_transaction
 
   enum :item_type, {
     KRM: 0,
     side_chain: 1
   }
 
-  def create_transaction
+  def create_transaction(quantity)
     return unless saved_change_to_quantity?
 
     old_quantity, new_quantity = saved_change_to_quantity
     transaction_type = new_quantity < old_quantity && 1 || 0
     transaction = self.item_transactions.create(
       transaction_type: transaction_type,
-      quantity: new_quantity,
+      quantity: quantity,
       user: User.current
     )
 
