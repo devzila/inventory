@@ -18,7 +18,7 @@ module ItemPresenter
     end
 
     api_accessible :show, extend: :base do |t|
-      t.add :item_transaction, template: :base
+      t.add :item_transactions, template: :base
     end
 
 
