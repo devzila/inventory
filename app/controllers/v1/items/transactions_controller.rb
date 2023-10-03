@@ -20,8 +20,8 @@ class V1::Items::TransactionsController < V1::Items::BaseController
 
   private
 
-  def item_transactions_scope
-    ItemTransaction.all
+  def transactions_scope
+    ItemTransaction.eager_load(:user)
   end
 
   def item_transactions_params

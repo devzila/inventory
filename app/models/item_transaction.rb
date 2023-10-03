@@ -1,4 +1,6 @@
 class ItemTransaction < ApplicationRecord
+  include ItemTransactionPresenter
+
   belongs_to :user
   belongs_to :item
 	enum :transaction_type, {
