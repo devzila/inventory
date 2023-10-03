@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     side_chain: 1
   }
 
-  def create_transaction(quantity)
+  def create_transaction(quantity, user)
     return unless saved_change_to_quantity?
 
     old_quantity, new_quantity = saved_change_to_quantity
@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     transaction = self.item_transactions.create(
       transaction_type: transaction_type,
       quantity: quantity,
-      user: User.current
+      user: user
     )
 
     fcm_response = PushNotifier.notify_item_quantity_change('Quantity changed', self)

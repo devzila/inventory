@@ -11,11 +11,11 @@ module ItemTransactionPresenter
     end
 
     api_accessible :index, extend: :base do |t|
-
+      t.add :user, template: :brief
     end
 
     api_accessible :show, extend: :base do |t|
-      t.add :user, template: :base
+      t.add :user, template: :brief
     end
 
 
