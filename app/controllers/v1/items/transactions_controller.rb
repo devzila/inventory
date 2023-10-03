@@ -1,4 +1,5 @@
 class V1::Items::TransactionsController < V1::Items::BaseController
+  include BaseCrud
 
   def create
     @previous_quantity = @item.quantity
@@ -16,15 +17,12 @@ class V1::Items::TransactionsController < V1::Items::BaseController
     end
   end
 
-  def index
-    render json: @item.item_transactions
-  end
-
-  def show
-    render json: @item.item_transactions.find(params[:id])
-  end
 
   private
+
+  def item_transactions_scope
+    ItemTransaction.all
+  end
 
   def item_transactions_params
     params.permit(
