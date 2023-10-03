@@ -75,7 +75,7 @@ module BaseCrud
   end
 
   def index_template
-    :base
+    :index
   end
   
   private
