@@ -1,4 +1,4 @@
-class V1::Items::BaseController < ApplicationController
+class V1::Items::BaseController < V1::BaseController
   before_action :set_item
 
   def set_item
