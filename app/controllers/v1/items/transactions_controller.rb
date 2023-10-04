@@ -11,7 +11,7 @@ class V1::Items::TransactionsController < V1::Items::BaseController
       end
       @item.update!(quantity: @new_quantity)
       @item.create_transaction(params[:quantity], current_user)
-      render json: { message: 'Successfully updated the Quantity', transaction: @item.item_transactions}, status: 200
+      render json: { message: 'Successfully updated the Quantity', transaction: @item.item_transactions.as_api_response(:index)}, status: 200
     else
       render json: { message: 'Error while updating Quantity' }, status: 402
     end
