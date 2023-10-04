@@ -16,6 +16,9 @@ module UserPresenter
       t.add :updated_at
     end
 
+    api_accessible :index, extend: :base do |t|
+    end
+
     api_accessible :login, extend: :base do |t|
     end
 
