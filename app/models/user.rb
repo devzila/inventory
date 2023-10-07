@@ -5,6 +5,16 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   has_many :device_tokens, class_name: 'UserDevice'
 
+
+  enum :role, {
+    admin: 0,
+    supervisor: 1,
+    stock_inventory: 2,
+    wip: 3,
+    fg: 4,
+    purchase: 5
+  }
+
   # ======================== CLASS METHODS ========================== #
   def self.current
     Thread.current[:admin]
