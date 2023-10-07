@@ -11,6 +11,6 @@ class PushNotifier
       },
       priority: 'high'
     }
-    fcm_client.send_notification(UserDevice.pluck(:device_token).join(','), options)
+    fcm_client.send_notification(UserDevice.pluck(:device_token), options)
   end
 end
