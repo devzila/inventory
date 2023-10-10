@@ -4,9 +4,9 @@ class V1::ItemsController < V1::BaseController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params.except(:quantity))
-      render json: {message: "Successfully updated", item: @item}
+      render json: {message: " Item Successfully updated", item: @item}
     else
-      render json: {message: @item.errors}
+      render json: {message: @item.errors.full_messages.join(', '), status: :unprocessable_entity}
     end
   end
 
