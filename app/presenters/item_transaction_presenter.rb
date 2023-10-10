@@ -8,6 +8,8 @@ module ItemTransactionPresenter
       t.add :id
       t.add :quantity
       t.add :transaction_type
+      t.add :created_at
+      t.add :updated_at
     end
 
     api_accessible :index, extend: :base do |t|
