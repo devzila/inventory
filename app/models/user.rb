@@ -5,6 +5,8 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   has_many :device_tokens, class_name: 'UserDevice'
 
+  validates :role, presence: true
+
 
   enum :role, {
     admin: 0,
@@ -13,7 +15,7 @@ class User < ApplicationRecord
     wip: 3,
     fg: 4,
     purchase: 5
-  }
+  } ,default: 1
 
   # ======================== CLASS METHODS ========================== #
   def self.current

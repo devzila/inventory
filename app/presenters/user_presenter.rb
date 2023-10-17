@@ -25,6 +25,7 @@ module UserPresenter
     api_accessible :brief do |t|
       t.add :id
       t.add :name
+      t.add :role
     end
 
     api_accessible :show, extend: :base do |t|
